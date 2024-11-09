@@ -1,0 +1,7 @@
+opencv-python-headless==4.10.0.84
+
+# Server requirements:
+fastapi
+uvicorn
+gunicorn
+python-multipart
