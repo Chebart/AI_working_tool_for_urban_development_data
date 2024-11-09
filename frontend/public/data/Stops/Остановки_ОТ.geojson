@@ -1,0 +1,920 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4534483610118,
+          55.635565394112945
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "д. Дудкино",
+        "TrStopId": "4504282527175082"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.509083901166235,
+          55.543594916086434
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Академика Семёнова",
+        "TrStopId": "4504282527177280"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.50262564309411,
+          55.541623372903416
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "СНТ Гавриково-1",
+        "TrStopId": "4504282527177281"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48954464542135,
+          55.55831193574257
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "СНТ Берёзка-Коммунарка-1",
+        "TrStopId": "4504282549350453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48877739433718,
+          55.55944752981669
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "СНТ Берёзка-Коммунарка-1",
+        "TrStopId": "4504282549350455"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.486526575561285,
+          55.54810672988316
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "СНТ Юннат-2 (по требованию)",
+        "TrStopId": "4504282549350480"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48700358097716,
+          55.547062792928244
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "СНТ Юннат-2 (по требованию)",
+        "TrStopId": "4504282549350484"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4893250971659,
+          55.54234206495791
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Микрорайон Бутовские аллеи",
+        "TrStopId": "4504282549350580"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.489448705349,
+          55.543579821119785
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Микрорайон Бутовские аллеи",
+        "TrStopId": "4504282549350584"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49687166420474,
+          55.54422727308474
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Микрорайон Бутовские аллеи",
+        "TrStopId": "70030076945308810"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48773148585188,
+          55.540387994935614
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Бунинские луга",
+        "TrStopId": "70030076164525717"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49058300805826,
+          55.540156722580505
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Бунинские луга",
+        "TrStopId": "4504282549350592"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48941537785196,
+          55.541197844089105
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Бунинские луга",
+        "TrStopId": "4504282549350596"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.495152558245515,
+          55.5400312758197
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Школа",
+        "TrStopId": "4504282549350665"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47936242133891,
+          55.5409727775364
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Проектируемый проезд №7048",
+        "TrStopId": "70030076164524472"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48021842597314,
+          55.540245317843436
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Проектируемый проезд №7048",
+        "TrStopId": "70030076164525651"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47332107139015,
+          55.54073769648459
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Ивановское кладбище",
+        "TrStopId": "70030076164524737"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47386580977844,
+          55.54072143136523
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Ивановское кладбище",
+        "TrStopId": "70030076164524840"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.45140658020252,
+          55.538659671348796
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Бунино",
+        "TrStopId": "70030076167625409"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.45321893128823,
+          55.538446129007845
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Бунино",
+        "TrStopId": "70030076167625418"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.470555517956456,
+          55.56021111099239
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Новомосковская",
+        "TrStopId": "70030076182318720"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.46569078136684,
+          55.560306062264864
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Новомосковская",
+        "TrStopId": "70030076182591107"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4676926769775,
+          55.560018007134886
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Новомосковская",
+        "TrStopId": "70030076182591116"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.471049860857306,
+          55.55758957271986
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "д. Столбово",
+        "TrStopId": "70030076182590761"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49206549777164,
+          55.556584298491714
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Гипермаркет Глобус",
+        "TrStopId": "70030076203128761"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49235673158675,
+          55.55655274671107
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Гипермаркет Глобус",
+        "TrStopId": "70030076202566808"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49131585366705,
+          55.55616883927976
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Александры Монаховой д.61",
+        "TrStopId": "70030076203184400"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49085798236673,
+          55.55718255813701
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Александры Монаховой д.61",
+        "TrStopId": "70030076202566532"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.511571965008656,
+          55.55360754826286
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Эдварда Грига",
+        "TrStopId": "70030076306609212"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.512395360798074,
+          55.55289475318389
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "ЖК Белые Ночи",
+        "TrStopId": "70030076703573550"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.51226753053315,
+          55.55221146792066
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "ЖК Белые Ночи",
+        "TrStopId": "70030076914547316"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.51263655845187,
+          55.55243428516106
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "ЖК Белые Ночи",
+        "TrStopId": "70030076914547423"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.456730715228446,
+          55.53977133340533
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "ЖК Южное Бунино",
+        "TrStopId": "70030076360299446"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48859332953546,
+          55.5445783127215
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Проспект Куприна",
+        "TrStopId": "70030076499065625"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4877609505932,
+          55.54620961229771
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Проспект Куприна",
+        "TrStopId": "70030076624708844"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.508374681249414,
+          55.55219810392744
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Эдварда Грига д.18",
+        "TrStopId": "70030076813928403"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.50571818329122,
+          55.55295684634027
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Эдварда Грига д.18",
+        "TrStopId": "70030076813928454"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.50621746692613,
+          55.55209164914228
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Эдварда Грига д.18",
+        "TrStopId": "70030076914570462"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.50837638804846,
+          55.55200739975709
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Эдварда Грига д.18",
+        "TrStopId": "70030076944615969"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47761088619793,
+          55.553893465495946
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Река Варварка",
+        "TrStopId": "70030076629485447"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47815158216744,
+          55.55486044685817
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Река Варварка",
+        "TrStopId": "70030076629485630"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.46004576812143,
+          55.53794426690096
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "КП Президент",
+        "TrStopId": "70030076743589011"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.46147552672763,
+          55.5377753006422
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "КП Президент",
+        "TrStopId": "70030076743589047"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49613513550329,
+          55.554018055045255
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово",
+        "TrStopId": "70030076944614727"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49656758448106,
+          55.55408446538181
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово",
+        "TrStopId": "70030076944614907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49554458303551,
+          55.55155586469085
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово",
+        "TrStopId": "70030076897499429"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49600919170046,
+          55.55168325643956
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово",
+        "TrStopId": "70030076897499496"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.51031073034975,
+          55.55212137520916
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Потаповская роща д.26",
+        "TrStopId": "70030076914547237"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4872455871147,
+          55.55323499402163
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Александры Монаховой",
+        "TrStopId": "70030076941946195"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.489810007756276,
+          55.55179453967953
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 5A",
+        "TrStopId": "70030076898981205"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49358904049351,
+          55.552138296191025
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 3A, 3B",
+        "TrStopId": "70030076813926052"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49723521240022,
+          55.55230267832345
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 4A",
+        "TrStopId": "70030076897500072"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49297818610031,
+          55.553266243592454
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 1A, 1B",
+        "TrStopId": "70030076813926132"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49029366070525,
+          55.55390977597737
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 7A",
+        "TrStopId": "70030076516583061"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49006090721513,
+          55.553894989840295
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 7B",
+        "TrStopId": "70030076516583034"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.497720122990586,
+          55.5534284360877
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Потапово · 2A",
+        "TrStopId": "70030076936990967"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.47196012373471,
+          55.55854792781752
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Метро Новомосковская · 2B",
+        "TrStopId": "70030076182590875"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49727581625106,
+          55.55631826690338
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Остановочный пункт",
+        "TrStopId": "70030076948540367"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.499938332921666,
+          55.557845586847876
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Остановочный пункт",
+        "TrStopId": "70030076948540429"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49885155109094,
+          55.557286865234396
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Остановочный пункт",
+        "TrStopId": "70030076948540491"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.50165510326115,
+          55.558312037354106
+        ]
+      },
+      "properties": {
+        "TrType": "Автобусная остановка",
+        "Name": "Остановочный пункт",
+        "TrStopId": "70030076954657232"
+      }
+    }
+  ]
+}
