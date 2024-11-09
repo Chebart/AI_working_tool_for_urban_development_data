@@ -10,4 +10,8 @@
   box-shadow: 0px 4px 8px 0px #4453710d, 0px 0px 16px 0px #4453711a;
   opacity: 1;
   padding: 16px 12px;
+
+  &-Cards > *:not(:first-child) {
+    margin-top: 12px;
+  }
 }

@@ -1,80 +1,81 @@
 import React from 'react';
-
-type StreetData = {
-  ST_NAME: string;
-  ST_TYP_BEF: string;
-  ST_NM_BASE: string;
-  ROAD_CATEG: number;
-  RoadDirect: number | string;
-  RbndStght: number | null;
-  RbndBck: number | null;
-  Width: number;
-  MaxSpdDrct: number;
-  AvgSpdDrct: number;
-  MaxSpdRvrs: number;
-  AvgSpdRvrs: number;
-  Foot: number;
-  Car: number;
-};
+import { StreetData } from '../../../models/StreetData';
+import { InfoDivided } from '../../../components/InfoDivided';
 
 type StreetDataProps = {
-  data: StreetData;
+  data: StreetData | null;
+};
+
+const labels: Record<keyof StreetData, string> = {
+  ST_NAME: 'Улица',
+  ST_TYP_BEF: 'Тип улицы',
+  ST_NM_BASE: 'Название без типа',
+  ROAD_CATEG: 'Класс улицы',
+  RoadDirect: 'Направление движения',
+  RbndStght: 'Правый перекрытие',
+  RbndBck: 'Левый перекрытие',
+  Width: 'Ширина улицы',
+  MaxSpdDrct: 'Максимальная скорость',
+  AvgSpdDrct: 'Средняя скорость',
+  MaxSpdRvrs: 'Максимальная скорость в обратном движении',
+  AvgSpdRvrs: 'Средняя скорость в обратном движении',
+  Foot: 'Количество пешеходных пересечений',
+  Car: 'Количество автомобильных перекрестков',
+};
+
+const getPrepareValue = (label: string, value: string | number | null) => {
+  switch (label) {
+    case 'RoadDirect':
+      return getRoadDirect(String(value));
+    case 'Width':
+      return `${value} м`;
+    case 'MaxSpdDrct':
+    case 'AvgSpdDrct':
+    case 'MaxSpdRvrs':
+    case 'AvgSpdRvrs':
+      return `${value} км/ч`;
+    default:
+      return value;
+  }
 };
 
 const StreetDataDisplay: React.FC<StreetDataProps> = ({ data }) => {
+  if (!data) return null;
+  const preparedData = Object.keys(data)
+    .map((key: string) => {
+      return (
+        Boolean(data[key as keyof StreetData]) && {
+          label: labels[key as keyof StreetData],
+          value: getPrepareValue(key, data[key as keyof StreetData]),
+        }
+      );
+    })
+    .filter(Boolean) as { label: string; value: string | number }[];
   return (
-    <div>
-      <h2>Информация об улице</h2>
+    <div className="Card">
+      <h3>Информация об улице</h3>
       <ul>
-        <li>
-          <strong>Название улицы:</strong> {data.ST_NAME}
-        </li>
-        <li>
-          <strong>Тип улицы:</strong> {data.ST_TYP_BEF}
-        </li>
-        <li>
-          <strong>Название без типа:</strong> {data.ST_NM_BASE}
-        </li>
-        <li>
-          <strong>Класс улицы:</strong> {data.ROAD_CATEG}
-        </li>
-        <li>
-          <strong>Направление движения:</strong> {data.RoadDirect}
-        </li>
-        <li>
-          <strong>Полос в прямом направлении:</strong>{' '}
-          {data.RbndStght ?? 'NULL'}
-        </li>
-        <li>
-          <strong>Полос в обратном направлении:</strong>{' '}
-          {data.RbndBck ?? 'NULL'}
-        </li>
-        <li>
-          <strong>Ширина полотна (м):</strong> {data.Width}
-        </li>
-        <li>
-          <strong>Макс. скорость (прямо):</strong> {data.MaxSpdDrct}
-        </li>
-        <li>
-          <strong>Сред. скорость (прямо):</strong> {data.AvgSpdDrct}
-        </li>
-        <li>
-          <strong>Макс. скорость (обратно):</strong> {data.MaxSpdRvrs}
-        </li>
-        <li>
-          <strong>Сред. скорость (обратно):</strong> {data.AvgSpdRvrs}
-        </li>
-        <li>
-          <strong>Возможность передвижения пешком:</strong>{' '}
-          {data.Foot === 1 ? 'Да' : 'Нет'}
-        </li>
-        <li>
-          <strong>Возможность передвижения на машине:</strong>{' '}
-          {data.Car === 1 ? 'Да' : 'Нет'}
-        </li>
+        {preparedData.map(({ label, value }) => (
+          <li key={label}>
+            <InfoDivided label={label} value={value} />
+          </li>
+        ))}
       </ul>
     </div>
   );
 };
 
 export default StreetDataDisplay;
+
+const getRoadDirect = (direct: string) => {
+  switch (direct) {
+    case '0':
+      return 'Перекрыто';
+    case 'F':
+      return 'Только прямо';
+    case 'T':
+      return 'Только обратно';
+    default:
+      return 'Двустороннее';
+  }
+};
