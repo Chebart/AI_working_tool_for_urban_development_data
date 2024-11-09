@@ -1,0 +1,103 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.48997790288288,
+          55.553571725893136
+        ]
+      },
+      "properties": {
+        "Number": "7",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49066179030868,
+          55.55354510045108
+        ]
+      },
+      "properties": {
+        "Number": "6",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49107205089893,
+          55.5518380874187
+        ]
+      },
+      "properties": {
+        "Number": "5",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4954651719644,
+          55.55201187138158
+        ]
+      },
+      "properties": {
+        "Number": "3",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.49652203989616,
+          55.55205907747738
+        ]
+      },
+      "properties": {
+        "Number": "4",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.496820011075904,
+          55.5535969793969
+        ]
+      },
+      "properties": {
+        "Number": "2",
+        "Text": "Потапово"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.495791529907116,
+          55.553573555121325
+        ]
+      },
+      "properties": {
+        "Number": "1",
+        "Text": "Потапово"
+      }
+    }
+  ]
+}
