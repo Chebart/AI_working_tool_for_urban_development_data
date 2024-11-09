@@ -1,4 +1,10 @@
-opencv-python-headless==4.10.0.84
+geopandas
+osmnx
+numpy
+scipy==1.12.0
+libpysal
+matplotlib
+momepy
 
 # Server requirements:
 fastapi
