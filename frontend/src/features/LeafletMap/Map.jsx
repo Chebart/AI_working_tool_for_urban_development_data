@@ -2,11 +2,12 @@ import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useState } from 'react';
 
-const onEachFeature = ({ feature, layer }) => {
+const onEachFeature = (feature, layer) => {
   layer.on({
     click: () => {
-      console.log(feature);
-      console.log(feature.properties.TrType);
+      // Здесь вы можете получить свойства объекта
+      console.log(feature.properties);
+      // тут в feature.properties как раз лежит один из объектов, которые я тебе скидывал. если хочешь посмотреть примеры, в папке public/data найдешь файлы с расширением .geojson. не советую открывать Street и Houses_init. от них вскод с ума сходит. если открывать то в блокнотике все будет нормально.
     },
   });
 };
@@ -46,7 +47,7 @@ const MapView = () => {
       <MapContainer
         center={[55.545, 37.489448705349]}
         zoom={15}
-        style={{ height: '100vh' }}>
+        style={{ height: '90vh' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {geo && (
           <>
