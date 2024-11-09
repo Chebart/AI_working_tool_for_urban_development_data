@@ -1,0 +1,21 @@
+.InfoDividedContainer {
+  display: flex;
+  align-items: baseline;
+  font: var(--font-description-l);
+}
+
+.InfoDividedLabel {
+  color: var(--fg-muted);
+}
+
+.InfoDividedValue {
+  max-width: 55%;
+  text-align: right;
+}
+
+.InfoDividedDivider {
+  flex: 1;
+  height: var(--border-width-divider);
+  background-color: var(--bg-disabled3);
+  margin: 0 8px;
+}

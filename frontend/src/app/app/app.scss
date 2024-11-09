@@ -2,3 +2,42 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.Input_checkbox {
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  //   &:not(:first-child) {
+  //     margin-top: 8px;
+  //   }
+
+  &:hover {
+    color: var(--fg-accent);
+    background-color: var(--bg-surface2);
+  }
+
+  label {
+    height: 30px;
+    line-height: 30px;
+    flex: 1;
+  }
+
+  input {
+    height: 16px;
+    width: 16px;
+    margin-right: 6px;
+    margin-left: 6px;
+  }
+}
+
+.Card {
+  background-color: var(--bg-surface2);
+  padding: 12px 16px;
+  border-radius: var(--border-radius-m);
+  border: 1px solid var(--border-muted);
+
+  .ListItem:not(:first-child) {
+    margin-top: 4px;
+  }
+}

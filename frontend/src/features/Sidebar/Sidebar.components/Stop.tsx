@@ -1,27 +1,34 @@
-type StopData = {
-  TrType: string;
-  Name: string;
-  TrStopId: number;
-};
+import { InfoDivided } from '../../../components/InfoDivided';
+import { StopData } from '../../../models/StopData';
 
 type StopDataProps = {
-  data: StopData;
+  data: StopData | null;
+};
+
+const labels: Record<keyof StopData, string> = {
+  TrType: 'Тип',
+  Name: 'Название',
+  TrStopId: 'Номер',
 };
 
 const StopDataDisplay: React.FC<StopDataProps> = ({ data }) => {
+  if (!data) return null;
   return (
-    <div>
-      <h2>Информация об остановке</h2>
+    <div className="Card">
+      <h3>Информация об остановке</h3>
       <ul>
-        <li>
-          <strong>Тип остановки:</strong> {data.TrType}
-        </li>
-        <li>
-          <strong>Название остановки:</strong> {data.Name}
-        </li>
-        <li>
-          <strong>Идентификатор остановки:</strong> {data.TrStopId}
-        </li>
+        {Object.keys(data).map((key: string) => {
+          return (
+            Boolean(data[key as keyof StopData]) && (
+              <li className="ListItem" key={key}>
+                <InfoDivided
+                  label={labels[key as keyof StopData]}
+                  value={data[key as keyof StopData]}
+                />
+              </li>
+            )
+          );
+        })}
       </ul>
     </div>
   );

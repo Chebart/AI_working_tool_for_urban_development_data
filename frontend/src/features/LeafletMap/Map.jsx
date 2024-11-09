@@ -8,32 +8,27 @@ import { useCurrentMetro } from '../../shared/hooks/useCurrentMetro.ts';
 
 const MapView = () => {
   const [geo, setGeo] = useState(null);
-  const [first, setFirst] = useState(false);
-  const [second, setSecond] = useState(false);
-  const [third, setThird] = useState(false);
 
   const [currentBuilding, setCurrentBuilding] = useCurrentBuilding();
   const [currentStreet, setCurrentStreet] = useCurrentStreet();
   const [currentBusStop, setCurrentBusStop] = useCurrentBusStop();
   const [currentMetro, setCurrentMetro] = useCurrentMetro();
 
-
-
   const onEachFeature = (feature, layer) => {
     layer.on({
       click: () => {
         // Здесь вы можете получить свойства объекта
         console.log(feature.properties);
-        if (feature.properties.ST_NAME) {
+        if ('ST_NAME' in feature.properties) {
           // street
           setCurrentStreet(feature.properties);
-        } else if (feature.properties.TrType) {
+        } else if ('TrType' in feature.properties) {
           // stop
           setCurrentBusStop(feature.properties);
-        } else if (feature.properties.Text) {
+        } else if ('Text' in feature.properties) {
           // metro
           setCurrentMetro(feature.properties);
-        } else if (feature.properties.Entrances) {
+        } else if ('Entrances' in feature.properties) {
           // building
           setCurrentBuilding(feature.properties);
         }
@@ -52,28 +47,16 @@ const MapView = () => {
     ]).then((d) => setGeo(d));
   }, []);
 
-  console.log('stop', currentBusStop)
+  const first = true;
+  const second = true;
+  const third = true;
 
   return (
     <div>
-      <div>
-        <button onClick={() => setFirst((c) => !c)}>
-          SHOW FIRST: {String(first)}
-        </button>
-        <br />
-        <button onClick={() => setSecond((c) => !c)}>
-          SHOW SECOND: {String(second)}
-        </button>
-        <br />
-        <button onClick={() => setThird((c) => !c)}>
-          SHOW THIRD: {String(third)}
-        </button>
-        <br />
-      </div>
       <MapContainer
         center={[55.545, 37.489448705349]}
         zoom={15}
-        style={{ height: '90vh' }}>
+        style={{ height: '100vh' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {geo && (
           <>
