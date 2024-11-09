@@ -1,4 +1,6 @@
+import asyncio
 import logging
+from shutil import copy
 
 from fastapi import FastAPI, HTTPException, APIRouter
 from fastapi.responses import JSONResponse
@@ -8,7 +10,8 @@ from pathlib import Path
 import json
 import os
 
-from backend.geojson_converter import DATA_PATH, get_version_folder, save_geojson
+from backend.geojson_converter import DATA_PATH, get_version_folder, save_geojson, LAYER_TYPES
+
 app = FastAPI()
 router = APIRouter()
 
@@ -19,10 +22,6 @@ def get_next_version() -> int:
     existing_versions = [int(folder.name) for folder in DATA_PATH.iterdir() if folder.is_dir()]
     return max(existing_versions, default=-1) + 1
 
-def save_geojson(geojson: Dict, path: Path) -> None:
-    """Saves a GeoJSON dictionary to a specified file path."""
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(geojson, f, indent=2, ensure_ascii=False)
 
 def load_geojson(path: Path) -> Dict:
     """Loads a GeoJSON file and returns it as a dictionary."""
@@ -35,6 +34,26 @@ class GeoJSONModel(BaseModel):
     type: str
     features: List[Dict]
 
+def create_new_version(layer: GeoJSONModel, layer_type: str, version: int):
+    all_layers = set(LAYER_TYPES.keys())
+    file_path = get_version_folder(version) / f"{layer_type}_layer.geojson"
+    save_geojson(layer.model_dump(), file_path)
+    logging.info(f"Saved: {file_path}")
+
+    all_layers.discard(layer_type)
+    for layer_left in all_layers:
+        # All layers that were changed are now copied from the previous version
+        copy(
+            get_version_folder(version - 1) / f"{layer_left}_layer.geojson",
+            get_version_folder(version) / f"{layer_left}_layer.geojson"
+        )
+        logging.info(f"Copied: {layer_left}_layer.geojson")
+
+
+
+async def update_graph(version: int):
+    # TODO: сюда положить пайплайн
+    await asyncio.sleep(10)
 
 @router.get("/get_layer/{layer_type}/{version}")
 async def get_layer(layer_type: str, version: int):
@@ -72,10 +91,12 @@ async def new_version(layer: GeoJSONModel, layer_type: str):
         JSONResponse: The new version number and success status.
     """
     version = get_next_version()
-    file_path = get_version_folder(version) / f"{layer_type}_layer.geojson"
+
 
     # Save the GeoJSON data
-    save_geojson(layer.dict(), file_path)
+    create_new_version(layer, layer_type, version)
+
+    await update_graph(version)
 
     return JSONResponse(content={"success": True, "version": version})
 
