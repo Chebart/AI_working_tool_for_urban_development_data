@@ -1,7 +1,5 @@
-import { Map } from "../../features/Map/Map";
+import MapView from '../../features/LeafletMap/Map';
 
 export function App() {
-  return (
-    <Map children={undefined} />
-  );
+  return <MapView />;
 }
