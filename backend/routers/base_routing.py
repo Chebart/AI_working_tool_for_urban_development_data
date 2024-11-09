@@ -52,6 +52,7 @@ async def get_layer(layer_type: str, version: int):
     file_path = get_version_folder(version) / f"{layer_type}_layer.geojson"
     logging.warning(f"Loading {file_path}")
     if not file_path.exists():
+        logging.warning(f"File does not exist: {file_path}")
         raise HTTPException(status_code=404, detail=f"GeoJSON file not found for layer '{layer_type}' and version '{version}'")
 
     geojson_data = load_geojson(file_path)

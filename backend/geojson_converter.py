@@ -8,8 +8,8 @@ import networkx as nx
 import numpy as np
 from shapely.geometry import Point, LineString, Polygon, MultiPolygon, mapping
 
-# Constants
-DATA_PATH = Path(os.getcwd()).parent / "data"
+
+DATA_PATH = Path("/app/data/")
 os.makedirs(DATA_PATH, exist_ok=True)
 
 # GeoJSON layer types

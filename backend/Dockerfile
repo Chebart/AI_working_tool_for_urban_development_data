@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bullseye AS compile-image
+FROM --platform=linux/amd64 python:3.12-slim-bullseye AS compile-image
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,17 +16,18 @@ RUN apt-get update && apt-get install -y \
 COPY backend/requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip && pip install -r /app/requirements.txt
 
-FROM python:3.12-slim-bullseye AS run-image
+FROM --platform=linux/amd64 python:3.12-slim-bullseye AS run-image
 WORKDIR app/
 #
 ENV PYTHONPATH=./
 ENV PYTHONUNBUFFERED=1
 ENV HOST=0.0.0.0
+ENV PORT=9000
 
 COPY --from=compile-image /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 COPY . /app
 
-EXPOSE 9044
+EXPOSE 9000
 
 CMD ["python3", "-m", "backend"]
