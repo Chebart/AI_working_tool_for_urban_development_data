@@ -1,22 +1,46 @@
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useState } from 'react';
-
-const onEachFeature = (feature, layer) => {
-  layer.on({
-    click: () => {
-      // Здесь вы можете получить свойства объекта
-      console.log(feature.properties);
-      // тут в feature.properties как раз лежит один из объектов, которые я тебе скидывал. если хочешь посмотреть примеры, в папке public/data найдешь файлы с расширением .geojson. не советую открывать Street и Houses_init. от них вскод с ума сходит. если открывать то в блокнотике все будет нормально.
-    },
-  });
-};
+import { useCurrentBuilding } from '../../shared/hooks/useCurrentBuilding.ts';
+import { useCurrentStreet } from '../../shared/hooks/useCurrentStreet.ts';
+import { useCurrentBusStop } from '../../shared/hooks/useCurrentBusStop.ts';
+import { useCurrentMetro } from '../../shared/hooks/useCurrentMetro.ts';
 
 const MapView = () => {
   const [geo, setGeo] = useState(null);
   const [first, setFirst] = useState(false);
   const [second, setSecond] = useState(false);
   const [third, setThird] = useState(false);
+
+  const [currentBuilding, setCurrentBuilding] = useCurrentBuilding();
+  const [currentStreet, setCurrentStreet] = useCurrentStreet();
+  const [currentBusStop, setCurrentBusStop] = useCurrentBusStop();
+  const [currentMetro, setCurrentMetro] = useCurrentMetro();
+
+
+
+  const onEachFeature = (feature, layer) => {
+    layer.on({
+      click: () => {
+        // Здесь вы можете получить свойства объекта
+        console.log(feature.properties);
+        if (feature.properties.ST_NAME) {
+          // street
+          setCurrentStreet(feature.properties);
+        } else if (feature.properties.TrType) {
+          // stop
+          setCurrentBusStop(feature.properties);
+        } else if (feature.properties.Text) {
+          // metro
+          setCurrentMetro(feature.properties);
+        } else if (feature.properties.Entrances) {
+          // building
+          setCurrentBuilding(feature.properties);
+        }
+        // тут в feature.properties как раз лежит один из объектов, которые я тебе скидывал. если хочешь посмотреть примеры, в папке public/data найдешь файлы с расширением .geojson. не советую открывать Street и Houses_init. от них вскод с ума сходит. если открывать то в блокнотике все будет нормально.
+      },
+    });
+  };
 
   useEffect(() => {
     Promise.all([
@@ -27,6 +51,8 @@ const MapView = () => {
       fetch('/data/Stops/Остановки_ОТ.geojson').then((r) => r.json()),
     ]).then((d) => setGeo(d));
   }, []);
+
+  console.log('stop', currentBusStop)
 
   return (
     <div>
