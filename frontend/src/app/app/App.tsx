@@ -1,7 +1,5 @@
+import MapView from '../../features/LeafletMap/Map';
+
 export function App() {
-  return (
-    <>
-    <h1>Hello World</h1>
-    </>
-  );
+  return <MapView />;
 }

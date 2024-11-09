@@ -107,3 +107,7 @@ th,
 td {
   border-collapse: collapse;
 }
+
+#root div div.leaflet-control-container div.leaflet-bottom.leaflet-right div {
+  display: none !important;
+}
