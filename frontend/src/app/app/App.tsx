@@ -1,5 +1,11 @@
-import MapView from '../../features/LeafletMap/Map';
-
+import { MapView } from '../../features/LeafletMap/Map';
+import { Sidebar } from '../../features/Sidebar/Sidebar';
+import './app.scss';
 export function App() {
-  return <MapView />;
+  return (
+    <div className="App">
+      <Sidebar />
+      <MapView />
+    </div>
+  );
 }
