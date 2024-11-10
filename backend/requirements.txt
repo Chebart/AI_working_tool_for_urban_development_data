@@ -1,11 +1,13 @@
 numpy~=1.26.4
 pandas~=2.2.3
 matplotlib~=3.9.2
+pyogrio
 geopandas~=0.14.4
 shapely~=2.0.6
 psutil~=6.0.0
 networkx~=3.3
 momepy~=0.8.1
+osmnx~=1.9.4
 pydantic~=2.8.2
 fastapi~=0.112.2
 starlette~=0.38.4

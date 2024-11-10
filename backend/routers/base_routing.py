@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from shutil import copy
+import shutil
 
 from fastapi import FastAPI, HTTPException, APIRouter
 from fastapi.responses import JSONResponse
@@ -10,7 +10,10 @@ from pathlib import Path
 import json
 import os
 
-from backend.geojson_converter import DATA_PATH, get_version_folder, save_geojson, LAYER_TYPES
+from backend.geojson_converter import LAYER_TYPES, dump_graph_to_geojson
+from backend.file_parser import DATA_PATH, get_version_folder, save_geojson, sanitize_geojson
+from backend.graph_builder import get_prepared_graph
+
 
 app = FastAPI()
 router = APIRouter()
@@ -19,7 +22,7 @@ router = APIRouter()
 
 def get_next_version() -> int:
     """Finds the next available version number based on existing directories."""
-    existing_versions = [int(folder.name) for folder in DATA_PATH.iterdir() if folder.is_dir()]
+    existing_versions = [int(folder.name) for folder in DATA_PATH.iterdir() if folder.is_dir() and bool(list(folder.iterdir()))]
     return max(existing_versions, default=-1) + 1
 
 
@@ -42,18 +45,32 @@ def create_new_version(layer: GeoJSONModel, layer_type: str, version: int):
 
     all_layers.discard(layer_type)
     for layer_left in all_layers:
-        # All layers that were changed are now copied from the previous version
-        copy(
-            get_version_folder(version - 1) / f"{layer_left}_layer.geojson",
-            get_version_folder(version) / f"{layer_left}_layer.geojson"
-        )
-        logging.info(f"Copied: {layer_left}_layer.geojson")
+        prev_version_path = get_version_folder(version - 1) / f"{layer_left}_layer.geojson"
+        new_version_path = get_version_folder(version) / f"{layer_left}_layer.geojson"
 
+        if not prev_version_path.exists():
+            logging.warning(f"Previous version file does not exist: {prev_version_path}")
+            continue
+
+        geojson_data = load_geojson(prev_version_path)
+
+        # sanitize_geojson(geojson_data)
+        save_geojson(geojson_data, new_version_path)
+
+        logging.info(f"Copied and sanitized: {layer_left}_layer.geojson")
 
 
 async def update_graph(version: int):
+    g = get_prepared_graph(version)
+    print(f"Graph created")
+
     # TODO: сюда положить пайплайн
     await asyncio.sleep(10)
+    print(f"Я тоже хочу спать")
+
+    dump_graph_to_geojson(g, version=version, save_separate_files=True)
+    print(f"Graph saved as version {version}")
+
 
 @router.get("/get_layer/{layer_type}/{version}")
 async def get_layer(layer_type: str, version: int):

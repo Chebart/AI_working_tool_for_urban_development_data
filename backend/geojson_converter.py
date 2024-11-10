@@ -8,9 +8,7 @@ import networkx as nx
 import numpy as np
 from shapely.geometry import Point, LineString, Polygon, MultiPolygon, mapping
 
-
-DATA_PATH = Path("/app/data/")
-os.makedirs(DATA_PATH, exist_ok=True)
+from backend.file_parser import get_version_folder, save_geojson
 
 # GeoJSON layer types
 LAYER_TYPES = {
@@ -20,17 +18,6 @@ LAYER_TYPES = {
 }
 
 
-def get_version_folder(version: int) -> Path:
-    """Creates and retrieves the folder for a specific graph version."""
-    path = DATA_PATH / str(version)
-    path.mkdir(parents=True, exist_ok=True)
-    return path
-
-def save_geojson(geojson: Dict, path: Path) -> None:
-    """Saves a GeoJSON dictionary to a specified file path."""
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(geojson, f, indent=2, ensure_ascii=False)
-    print(f"GeoJSON saved to {path}")
 
 def serialize_geometry(instance):
     """Serializes Shapely geometry objects into JSON-compatible formats."""
@@ -89,6 +76,8 @@ def dump_graph_to_geojson(graph: nx.Graph, version: int = 0, save_separate_files
             "geometry": mapping(point),
             "properties": {k: serialize_geometry(v) for k, v in data.items()}
         }
+        if "geometry" in node_feature['properties']:
+            node_feature['geometry'] = node_feature['properties'].pop(['geometry'])
 
         # Determine the layer type for the node
         node_type = data.get("Type", None)
@@ -110,6 +99,8 @@ def dump_graph_to_geojson(graph: nx.Graph, version: int = 0, save_separate_files
             "geometry": mapping(line),
             "properties": {k: serialize_geometry(v) for k, v in data.items()}
         }
+        if "geometry" in edge_feature['properties']:
+            node_feature['geometry'] = node_feature['properties'].pop(['geometry'])
 
         layers["streets"].append(edge_feature)
 

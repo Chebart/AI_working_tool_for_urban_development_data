@@ -23,6 +23,7 @@ ENV PYTHONPATH=./
 ENV PYTHONUNBUFFERED=1
 ENV HOST=0.0.0.0
 ENV PORT=9000
+ENV IN_DOCKER=1
 
 COPY --from=compile-image /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
