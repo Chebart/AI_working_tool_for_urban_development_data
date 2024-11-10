@@ -12,14 +12,17 @@ services:
         source: ./data
         target: /app/data
 
-#  frontend_api:
-#    container_name: frontend_api_container
-#    image: frontend_api_img
-#    build:
-#      context: ./rontend/
-#      dockerfile: Dockerfile
-#    ports:
-#      - "9001:9001"
+
+  frontend_api:
+    build:
+      context: frontend/
+      dockerfile: .dockerfile
+    container_name: frontend_api_container
+    image: frontend_api_img
+    ports:
+      - "4173:4173"
+
+#  ml_api:
 #    container_name: ml_api_container
 #    image: ml_api_img
 #    build:
@@ -36,4 +39,3 @@ services:
 #            - driver: nvidia
 #              count: 1
 #              capabilities: [gpu]
-#  ml_api:
