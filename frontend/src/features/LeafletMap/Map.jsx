@@ -1,10 +1,16 @@
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect, useState } from 'react';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-draw/dist/leaflet.draw.css';
+import React, { useEffect, useState } from 'react';
 import { useCurrentBuilding } from '../../shared/hooks/useCurrentBuilding.ts';
 import { useCurrentStreet } from '../../shared/hooks/useCurrentStreet.ts';
 import { useCurrentBusStop } from '../../shared/hooks/useCurrentBusStop.ts';
 import { useCurrentMetro } from '../../shared/hooks/useCurrentMetro.ts';
+import { EditControl } from 'react-leaflet-draw';
+import { usePolygons } from '../../shared/hooks/usePolygons.ts';
+import { useLines } from '../../shared/hooks/useLines.ts';
+import { Polygon, Polyline } from '../../models/LayerItem.ts';
 
 const MapView = () => {
   const [geo, setGeo] = useState(null);
@@ -16,8 +22,8 @@ const MapView = () => {
   const [currentStreet, setCurrentStreet] = useCurrentStreet();
   const [currentBusStop, setCurrentBusStop] = useCurrentBusStop();
   const [currentMetro, setCurrentMetro] = useCurrentMetro();
-
-
+  const [polygons, addPolygon] = usePolygons();
+  const [lines, addLine] = useLines();
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -52,8 +58,6 @@ const MapView = () => {
     ]).then((d) => setGeo(d));
   }, []);
 
-  console.log('stop', currentBusStop)
-
   return (
     <div>
       <div>
@@ -75,6 +79,37 @@ const MapView = () => {
         zoom={15}
         style={{ height: '90vh' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <FeatureGroup>
+          <EditControl
+            position="topright"
+            onCreated={(v) => {
+              if (v.layerType == 'polyline') {
+                addLine(v.layer._leaflet_id, new Polyline([v.layer._latlngs]));
+              } else if (v.layerType == 'polygon') {
+                addPolygon(v.layer._leaflet_id, new Polygon([v.layer._latlngs]));
+              }
+            }}
+            onEdited={(v) => {
+              Object.keys(v.layers._layers).forEach((line) => {
+                if (v.layers._layers[line]) {
+                  if (v.layers._layers[line]._latlngs.length > 1) {
+                    addLine(v.layers._layers[line]._leaflet_id, new Polyline([v.layers._layers[line]._latlngs]));
+                  } else {
+                    addPolygon(v.layers._layers[line]._leaflet_id, new Polygon([v.layers._layers[line]._latlngs]));
+                  }
+                }
+              });
+            }}
+            draw={{
+              polyline: true,
+              polygon: true,
+              rectangle: false,
+              circle: false,
+              marker: false,
+              circlemarker: false,
+            }}
+          />
+        </FeatureGroup>
         {geo && (
           <>
             {first && (
