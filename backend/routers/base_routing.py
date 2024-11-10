@@ -3,6 +3,7 @@ import logging
 import shutil
 
 from fastapi import FastAPI, HTTPException, APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Dict, List
@@ -19,6 +20,15 @@ from backend.graph_updater import update_loads_on_roads_graph
 app = FastAPI()
 router = APIRouter()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_next_version() -> int:
