@@ -71,6 +71,11 @@ from uuid import uuid4
 def _add_node(row: pd.Series, graph: nx.MultiGraph) -> None:
     centroid_point = (row["geometry"].centroid.x, row["geometry"].centroid.y)
 
+    if graph.number_of_nodes() == 0:
+        # If no nodes exist, add the first node without finding the closest
+        graph.add_node(centroid_point, **row.to_dict())
+        print(f"Graph was empty. Added the first node: {centroid_point}")
+        return
     # Find the closest node in the street network
     closest_node = _find_closest_node(centroid_point, graph)
 
