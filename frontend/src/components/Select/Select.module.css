@@ -1,0 +1,90 @@
+.SelectContainer {
+  position: relative;
+}
+
+.SelectValue {
+  position: relative;
+  width: 100%;
+  padding: 8px 38px 8px 12px;
+  font: var(--font-body-s);
+  border-radius: 8px;
+  border: var(--border-width-m) solid var(--border-input);
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.SelectValue:focus {
+  border-color: var(--border-accent);
+}
+
+.SelectContainer_open .SelectValue {
+  border-color: var(--border-accent);
+}
+
+.SelectContainer_open .SelectValue::before {
+  content: ' ';
+  border: 4px solid var(--bg-accent-hover-soft);
+  border-radius: 12px;
+  position: absolute;
+  inset: -6px;
+}
+
+.SelectValue::after {
+  content: ' ';
+  background: url('/images/cssImages/selectArrow.svg') center no-repeat;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.SelectContainer_open .SelectValue::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.SelectContainer_open .SelectOptions {
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+}
+
+.SelectOptions {
+  transition: opacity 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transform: translateY(2px);
+  width: 100%;
+  background-color: var(--bg-surface1);
+  border-radius: var(--border-radius-inputs);
+  padding: 8px 12px;
+  box-shadow: var(--shadow-bottom-xl);
+  max-height: 400px;
+  overflow: auto;
+}
+
+.SelectOption:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.SelectOptionButton {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-buttons);
+  text-align: left;
+  transition: color 0.1s;
+}
+
+.SelectOptionButton:hover,
+.SelectOptionButton:focus {
+  color: var(--fg-accent);
+  /* background-color: var(--bg-accent-hover-soft); */
+}

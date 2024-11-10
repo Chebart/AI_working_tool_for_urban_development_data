@@ -1,7 +1,150 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  color: #191919;
+  color: #17100e;
+  /* LAYOUT CONSTANTS */
+  --header-height: 64px;
+  --body-height: calc(100vh - var(--header-height));
+
+  --mobile-width: 393px;
+  --tablet-width: 768px;
+  --small-desktop-width: 1024px;
+
+  /* FONT */
+  --font-heading-h1: 700 28px/32px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-heading-h2: 700 22px/24px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-heading-h3: 700 18px/20px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-heading-h4: 700 16px/20px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-heading-h5: 700 14px/20px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-title: 500 14px/24px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-l: 400 18px/26px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-l-strong: 500 18px/26px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-m: 400 16px/24px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-m-strong: 500 16px/24px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-s: 400 14px/20px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-body-s-strong: 500 14px/20px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-description-l: 400 12px/16px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-description-l-strong: 500 12px/16px Inter, system-ui, Avenir, Helvetica,
+    Arial, sans-serif;
+  --font-description-m: 400 11px/16px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-description-m-strong: 500 11px/16px Inter, system-ui, Avenir, Helvetica,
+    Arial, sans-serif;
+  --font-description-s: 400 10px/12px Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  --font-description-s-strong: 500 10px/12px Inter, system-ui, Avenir, Helvetica,
+    Arial, sans-serif;
+
+  /* COLORS */
+  --fg-default: #17100e;
+  --fg-soft: #5b5b5b;
+  --fg-muted: #949494;
+  --fg-disabled: #5b5b5b80;
+  --fg-accent-white: #ffffff;
+  --fg-accent: #ff4000;
+
+  --bg-surface1: #ffffff;
+  --bg-surface2: #f9fafb;
+  --bg-surface3: #f6f7f8;
+  --bg-surface4: #eceef1;
+  --bg-surface5: #d0d4dc;
+  --bg-surface-secondary: #f6f6f6;
+  --bg-page: #ffffff;
+  --bg-disabled: #4453711a;
+  --bg-disabled2: #4453710f;
+  --bg-disabled3: #69758e29;
+  --bg-accent: #ff4000;
+  --bg-accent-hover: #d93600;
+  --bg-accent-hover-soft: #ff40001a;
+  --paranja: #ffffffaa;
+  --paranja-dark: #000000aa;
+
+  --border-input: #44537126;
+  --border-default: #714f4480;
+  --border-soft: #714f4440;
+  --border-muted: #714f441a;
+  --border-accent: #ff6633;
+
+  --neutral-default: #222200;
+
+  --brand-violet: #7800ff;
+  --accent-color: #ff4f12;
+  --secondary-accent-color-default: #ff4f121a;
+  --secondary-accent-color-hover: #ff4f1233;
+  --warning-color: #fef8ec;
+  --success-300: #5ac180;
+  --success-soft: #34b263;
+  --warning-300: #f7b859;
+  --error-soft: #e14453;
+  --badge-secondary-success-bg-color: #019f3c1a;
+
+  /* SIZES */
+  --size-base: 16px;
+  --size-2xs: var(--size-base);
+  --size-xs: calc(var(--size-base) * 1.25);
+  --size-s: calc(var(--size-base) * 1.5);
+  --size-m-tag: calc(var(--size-base) * 1.75);
+  --size-m-chip: calc(var(--size-base) * 2);
+  --size-m: calc(var(--size-base) * 2.25);
+  --size-l: calc(var(--size-base) * 3);
+  --size-xl: calc(var(--size-base) * 3.5);
+
+  /* BORDERS */
+  --border-radius-full: 9999px;
+  --border-radius-buttons: 6px;
+  --border-radius-inputs: 6px;
+  --border-radius-special: 16px;
+  --border-radius-2xs: 2px;
+  --border-radius-xs: 3px;
+  --border-radius-s: 4px;
+  --border-radius-m: 6px;
+  --border-radius-l: 9px;
+  --border-radius-xl: 12px;
+  --border-radius-2xl: 24px;
+  --border-radius-3xl: 48px;
+
+  --border-width-s: 1px;
+  --border-width-m: 2px;
+  --border-width-l: 4px;
+  --border-width-buttons: 2px;
+  --border-width-inputs: 2px;
+  --border-width-divider: 1px;
+
+  /* SHADOWS */
+  --shadow-bottom-s: 0px 2px 4px 0px #4453710d, 0px 0px 8px 0px #4453711a;
+  --shadow-bottom-m: 0px 4px 8px 0px #4453710d, 0px 0px 16px 0px #4453711a;
+  --shadow-bottom-l: 0px 12px 20px 0px #4453710d, 0px 0px 20px 0px #4453711a;
+  --shadow-bottom-xl: 0px 32px 32px 0px #4453710d, 0px 0px 32px 0px #4453711a;
+  --shadow-bottom-controls: 0px 2px 2px 0px #44537133, 0px 0px 1px 0px #4453711a;
+
+  --shadow-bottom-accent-s: 0px 0px 8px 0px #0055ff0d, 0px 2px 4px 0px #0055ff1a;
+  --shadow-bottom-accent-m: 0px 0px 16px 0px #0055ff0d,
+    0px 4px 8px 0px #0055ff1a;
+  --shadow-bottom-accent-l: 0px 0px 20px 0px #0055ff0d,
+    0px 12px 20px 0px #0055ff1a;
+  --shadow-bottom-accent-xl: 0px 0px 32px 0px #0055ff0d,
+    0px 32px 32px 0px #0055ff1a;
+  --shadow-bottom-accent-controls: 0px 0px 1px 0px #0055ff33,
+    0px 2px 2px 0px #0055ff1a;
+
+  --shadow-top-s: 0px -2px 4px 0px #4453710d, 0px 0px 8px 0px #4453711a;
+  --shadow-top-m: 0px -4px 8px 0px #4453710d, 0px 0px 16px 0px #4453711a;
+  --shadow-top-l: 0px -12px 20px 0px #4453710d, 0px 0px 20px 0px #4453711a;
+  --shadow-top-xl: 0px -32px 32px 0px #4453710d, 0px 0px 32px 0px #4453711a;
+  --shadow-top-controls: 0px -2px 2px 0px #44537133, 0px 0px 1px 0px #4453711a;
 }
 
 body {
@@ -28,4 +171,19 @@ body {
 /* Optional: scrollbar corner styling (appears where horizontal and vertical meet) */
 *::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+h2 {
+  font: var(--font-heading-h2);
+  margin-bottom: 12px;
+}
+
+h3 {
+  font: var(--font-heading-h3);
+  margin-bottom: 12px;
+}
+
+hr {
+  height: 2px;
+  background-color: var(--bg-surface4);
 }
