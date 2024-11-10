@@ -2,8 +2,16 @@ import React, { useEffect, useState } from 'react';
 import useMapLayersStore, { LayerType } from '../../../store/useMapLayersStore';
 import { Select } from '../../../components/Select/Select';
 
-// const layers = ['Станции метро', 'Автобусные остановки', 'Здания', 'Улицы'];
+// резервируем поля.
+// 0-4 - статика
+// 0 - метро
+// 1 - остановки
+// 2 - здания из init
+// 3 - дороги из init
 
+// 4-5 - с бэка
+// 4 - здания с бэка
+// 5 - дорожки с бэка
 const layers: { label: string; value: LayerType }[] = [
   {
     label: 'Станции метро',
@@ -56,7 +64,6 @@ export const MapLayerControls: React.FC = () => {
             <input
               id={layer.value}
               name={layer.value}
-              disabled={layer.value === 'roads'}
               type="checkbox"
               checked={visibility[layer.value]}
               onChange={() => toggleLayerVisibility(layer.value)}

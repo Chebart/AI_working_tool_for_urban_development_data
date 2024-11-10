@@ -30,7 +30,7 @@ interface MapLayersStore {
 const useMapLayersStore = create<MapLayersStore>((set) => ({
   // Initial visibility state for all layers
   visibility: {
-    roads: true,
+    roads: false,
     metroStations: false,
     busStops: false,
     buildings: false,
@@ -56,7 +56,7 @@ const useMapLayersStore = create<MapLayersStore>((set) => ({
   resetLayers: () =>
     set(() => ({
       visibility: {
-        roads: true,
+        roads: false,
         metroStations: false,
         busStops: false,
         buildings: false,

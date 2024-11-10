@@ -11,11 +11,10 @@ import useMapLayersStore from '../../store/useMapLayersStore.ts';
 import { EditControl } from 'react-leaflet-draw';
 import { usePolygons } from '../../shared/hooks/usePolygons.ts';
 import { useLines } from '../../shared/hooks/useLines.ts';
-import { CustomPolygon, Polyline } from '../../models/LayerItem.ts';
+import { Polyline } from '../../models/LayerItem.ts';
 import { useLayers } from '../../shared/hooks/useLayers.ts';
 
 const MapView = () => {
-
   const [currentBuilding, setCurrentBuilding] = useCurrentBuilding();
   const [currentStreet, setCurrentStreet] = useCurrentStreet();
   const [currentBusStop, setCurrentBusStop] = useCurrentBusStop();
@@ -23,6 +22,8 @@ const MapView = () => {
   const [polygons, addPolygon] = usePolygons();
   const [lines, addLine] = useLines();
   const [layers, loadLayers] = useLayers();
+
+  console.log(polygons);
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -47,9 +48,11 @@ const MapView = () => {
     });
   };
 
+  const { versions } = useMapLayersStore();
+
   useEffect(() => {
-    loadLayers();
-  }, []);
+    loadLayers(versions.buildings);
+  }, [versions]);
 
   const visibility = useMapLayersStore((state) => state.visibility);
 
@@ -123,13 +126,13 @@ const MapView = () => {
                 onEachFeature={onEachFeature}
               />
             )}
-            {/* {visibility.roads && (
+            {visibility.roads && (
               <GeoJSON
                 key="streets"
                 data={layers[3]}
                 onEachFeature={onEachFeature}
               />
-            )} */}
+            )}
             {/* {first && (
               <GeoJSON
                 key="first"
