@@ -7,10 +7,19 @@ import uvicorn
 from fastapi import FastAPI
 
 from backend.routers import base_router
+from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
 
 fastapi_app = FastAPI(
     title="Transport AI",
+)
+fastapi_app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to specific origins in production
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
 )
 fastapi_app.include_router(base_router)
 # fastapi_app.include_router(test_router)
