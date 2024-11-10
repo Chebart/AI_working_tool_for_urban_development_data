@@ -3,6 +3,7 @@ import logging
 import shutil
 
 from fastapi import FastAPI, HTTPException, APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Dict, List
@@ -13,11 +14,21 @@ import os
 from backend.geojson_converter import LAYER_TYPES, dump_graph_to_geojson
 from backend.file_parser import DATA_PATH, get_version_folder, save_geojson, sanitize_geojson
 from backend.graph_builder import get_prepared_graph
+from backend.graph_updater import update_loads_on_roads_graph
 
 
 app = FastAPI()
 router = APIRouter()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_next_version() -> int:
@@ -64,15 +75,14 @@ async def update_graph(version: int):
     g = get_prepared_graph(version)
     print(f"Graph created")
 
-    # TODO: сюда положить пайплайн
-    await asyncio.sleep(10)
-    print(f"Я тоже хочу спать")
+    g = update_loads_on_roads_graph(g)
+    print(f"Graph updated")
 
     dump_graph_to_geojson(g, version=version, save_separate_files=True)
     print(f"Graph saved as version {version}")
 
 
-@router.get("/get_layer/{layer_type}/{version}")
+@router.get("/get_layer/{layer_type}/{version}")    
 async def get_layer(layer_type: str, version: int):
     """
     Fetches a GeoJSON file for a given layer type and version.
