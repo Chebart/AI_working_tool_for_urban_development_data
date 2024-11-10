@@ -37,7 +37,7 @@ export const MapLayerControls: React.FC = () => {
 
   const [versionCount, setVersionCount] = useState<number>(0);
   useEffect(() => {
-    fetch('http://0.0.0.0:9000/get_available_versions')
+    fetch('http://0.0.0.0:9000/get_available_versions', { mode: 'no-cors' })
       .then((res) => res.json())
       .then((data) => setVersionCount(data.versions.length))
       .catch(() => setVersionCount(0));
