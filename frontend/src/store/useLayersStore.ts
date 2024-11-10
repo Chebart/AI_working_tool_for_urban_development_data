@@ -21,10 +21,18 @@ export const useLayersStore = create<LayersState>((set) => ({
     // 5 - дорожки с бэка
 
     Promise.all([
-      fetch('/data/geojsons/Metro.geojson').then((r) => r.json()),
-      fetch('/data/geojsons/Stops.geojson').then((r) => r.json()),
-      fetch('/data/geojsons/Houses_init.geojson').then((r) => r.json()),
-      fetch('/data/geojsons/Streets_init.geojson').then((r) => r.json()),
+      fetch('/data/geojsons/Metro.geojson', { mode: 'no-cors' }).then((r) =>
+        r.json(),
+      ),
+      fetch('/data/geojsons/Stops.geojson', { mode: 'no-cors' }).then((r) =>
+        r.json(),
+      ),
+      fetch('/data/geojsons/Houses_init.geojson', { mode: 'no-cors' }).then(
+        (r) => r.json(),
+      ),
+      fetch('/data/geojsons/Streets_init.geojson', { mode: 'no-cors' }).then(
+        (r) => r.json(),
+      ),
       // fetch('/get_layer/residence/' + version).then((r) => r.json()),
       // fetch('/get_layer/streets/' + version).then((r) => r.json()),
     ]).then((d) => set(() => ({ layers: d })));
