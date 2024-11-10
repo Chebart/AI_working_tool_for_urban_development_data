@@ -1,10 +1,10 @@
 import { create } from 'zustand';
-import { Polygon, Polyline } from '../models/LayerItem.ts';
+import { CustomPolygon, Polyline } from '../models/LayerItem.ts';
 
 interface NewLayer {
-  polygons: Record<number, Polygon>,
+  polygons: Record<number, CustomPolygon>,
   lines: Record<number, Polyline>,
-  addNewPolygon: (id: number, newItem: Polygon) => void,
+  addNewPolygon: (id: number, newItem: CustomPolygon) => void,
   addNewLine: (id: number, newItem: Polyline) => void,
 }
 
@@ -12,7 +12,7 @@ export const useNewLayer =
   create<NewLayer>()((set) => ({
     polygons: {},
     lines: {},
-    addNewPolygon: (id: number, newItem: Polygon) => {
+    addNewPolygon: (id: number, newItem: CustomPolygon) => {
       set((state) => ({
         polygons: { ...state.polygons, [id]: newItem }
       }));

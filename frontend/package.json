@@ -10,12 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/geojson": "^7946.0.14",
     "@types/react-lottie": "^1.2.10",
     "ember-leaflet-draw-controls": "^0.7.4",
     "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet-draw": "^1.0.4",
-    "leaflet.locatecontrol": "^0.82.0",
     "lottie": "^0.0.1",
     "npm": "^10.9.0",
     "react": "^18.3.1",

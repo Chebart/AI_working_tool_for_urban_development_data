@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useCurrentBuilding } from '../../shared/hooks/useCurrentBuilding.ts';
 import { useCurrentStreet } from '../../shared/hooks/useCurrentStreet.ts';
 import { useCurrentBusStop } from '../../shared/hooks/useCurrentBusStop.ts';
@@ -11,10 +11,10 @@ import useMapLayersStore from '../../store/useMapLayersStore.ts';
 import { EditControl } from 'react-leaflet-draw';
 import { usePolygons } from '../../shared/hooks/usePolygons.ts';
 import { useLines } from '../../shared/hooks/useLines.ts';
-import { Polygon, Polyline } from '../../models/LayerItem.ts';
+import { CustomPolygon, Polyline } from '../../models/LayerItem.ts';
+import { useLayers } from '../../shared/hooks/useLayers.ts';
 
 const MapView = () => {
-  const [geo, setGeo] = useState(null);
 
   const [currentBuilding, setCurrentBuilding] = useCurrentBuilding();
   const [currentStreet, setCurrentStreet] = useCurrentStreet();
@@ -22,6 +22,7 @@ const MapView = () => {
   const [currentMetro, setCurrentMetro] = useCurrentMetro();
   const [polygons, addPolygon] = usePolygons();
   const [lines, addLine] = useLines();
+  const [layers, loadLayers] = useLayers();
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -47,13 +48,7 @@ const MapView = () => {
   };
 
   useEffect(() => {
-    Promise.all([
-      fetch('/data/Metro/Выходы_метро.geojson').then((r) => r.json()),
-      fetch('/data/Stops/Остановки_ОТ.geojson').then((r) => r.json()),
-      fetch('/data/House_1/House_1очередь_ЖК.geojson').then((r) => r.json()),
-      fetch('/data/House_2/House_2очередь_ЖК.geojson').then((r) => r.json()),
-      fetch('/data/House_3/House_3очередь_ЖК.geojson').then((r) => r.json()),
-    ]).then((d) => setGeo(d));
+    loadLayers();
   }, []);
 
   const visibility = useMapLayersStore((state) => state.visibility);
@@ -74,7 +69,7 @@ const MapView = () => {
               } else if (v.layerType == 'polygon') {
                 addPolygon(
                   v.layer._leaflet_id,
-                  new Polygon([v.layer._latlngs]),
+                  new CustomPolygon([v.layer._latlngs]),
                 );
               }
             }}
@@ -89,7 +84,7 @@ const MapView = () => {
                   } else {
                     addPolygon(
                       v.layers._layers[line]._leaflet_id,
-                      new Polygon([v.layers._layers[line]._latlngs]),
+                      new CustomPolygon([v.layers._layers[line]._latlngs]),
                     );
                   }
                 }
@@ -105,33 +100,33 @@ const MapView = () => {
             }}
           />
         </FeatureGroup>
-        {geo && (
+        {layers && (
           <>
             {visibility.metroStations && (
               <GeoJSON
                 key="metros"
-                data={geo[0]}
+                data={layers[0]}
                 onEachFeature={onEachFeature}
               />
             )}
             {visibility.busStops && (
               <GeoJSON
                 key="busStops"
-                data={geo[1]}
+                data={layers[1]}
                 onEachFeature={onEachFeature}
               />
             )}
             {visibility.buildings && (
               <GeoJSON
                 key="buildings"
-                data={geo[2]}
+                data={layers[2]}
                 onEachFeature={onEachFeature}
               />
             )}
             {/* {visibility.roads && (
               <GeoJSON
                 key="streets"
-                data={geo[3]}
+                data={layers[3]}
                 onEachFeature={onEachFeature}
               />
             )} */}
