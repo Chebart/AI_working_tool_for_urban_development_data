@@ -7,7 +7,7 @@ import { useCurrentBusStop } from '../../shared/hooks/useCurrentBusStop';
 import { useCurrentMetro } from '../../shared/hooks/useCurrentMetro';
 import { useCurrentStreet } from '../../shared/hooks/useCurrentStreet';
 import BuildingDataDisplay from './Sidebar.components/Building';
-import { MapLayersManager } from './Sidebar.components/MapLayersManager';
+import { MapLayerControls } from './Sidebar.components/MapLayerControls';
 import MetroExitDataDisplay from './Sidebar.components/Metro';
 import StopDataDisplay from './Sidebar.components/Stop';
 import StreetDataDisplay from './Sidebar.components/Street';
@@ -22,7 +22,7 @@ export const Sidebar = () => {
 
   return (
     <div className="Sidebar">
-      <MapLayersManager />
+      <MapLayerControls />
       <br />
       <hr />
       <br />

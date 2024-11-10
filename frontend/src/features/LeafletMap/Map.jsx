@@ -7,6 +7,7 @@ import { useCurrentBuilding } from '../../shared/hooks/useCurrentBuilding.ts';
 import { useCurrentStreet } from '../../shared/hooks/useCurrentStreet.ts';
 import { useCurrentBusStop } from '../../shared/hooks/useCurrentBusStop.ts';
 import { useCurrentMetro } from '../../shared/hooks/useCurrentMetro.ts';
+import useMapLayersStore from '../../store/useMapLayersStore.ts';
 import { EditControl } from 'react-leaflet-draw';
 import { usePolygons } from '../../shared/hooks/usePolygons.ts';
 import { useLines } from '../../shared/hooks/useLines.ts';
@@ -21,7 +22,6 @@ const MapView = () => {
   const [currentMetro, setCurrentMetro] = useCurrentMetro();
   const [polygons, addPolygon] = usePolygons();
   const [lines, addLine] = useLines();
-
 
   const onEachFeature = (feature, layer) => {
     layer.on({
@@ -48,17 +48,15 @@ const MapView = () => {
 
   useEffect(() => {
     Promise.all([
+      fetch('/data/Metro/Выходы_метро.geojson').then((r) => r.json()),
+      fetch('/data/Stops/Остановки_ОТ.geojson').then((r) => r.json()),
       fetch('/data/House_1/House_1очередь_ЖК.geojson').then((r) => r.json()),
       fetch('/data/House_2/House_2очередь_ЖК.geojson').then((r) => r.json()),
       fetch('/data/House_3/House_3очередь_ЖК.geojson').then((r) => r.json()),
-      fetch('/data/Metro/Выходы_метро.geojson').then((r) => r.json()),
-      fetch('/data/Stops/Остановки_ОТ.geojson').then((r) => r.json()),
     ]).then((d) => setGeo(d));
   }, []);
 
-  const first = true;
-  const second = true;
-  const third = true;
+  const visibility = useMapLayersStore((state) => state.visibility);
 
   return (
     <div>
@@ -74,16 +72,25 @@ const MapView = () => {
               if (v.layerType == 'polyline') {
                 addLine(v.layer._leaflet_id, new Polyline([v.layer._latlngs]));
               } else if (v.layerType == 'polygon') {
-                addPolygon(v.layer._leaflet_id, new Polygon([v.layer._latlngs]));
+                addPolygon(
+                  v.layer._leaflet_id,
+                  new Polygon([v.layer._latlngs]),
+                );
               }
             }}
             onEdited={(v) => {
               Object.keys(v.layers._layers).forEach((line) => {
                 if (v.layers._layers[line]) {
                   if (v.layers._layers[line]._latlngs.length > 1) {
-                    addLine(v.layers._layers[line]._leaflet_id, new Polyline([v.layers._layers[line]._latlngs]));
+                    addLine(
+                      v.layers._layers[line]._leaflet_id,
+                      new Polyline([v.layers._layers[line]._latlngs]),
+                    );
                   } else {
-                    addPolygon(v.layers._layers[line]._leaflet_id, new Polygon([v.layers._layers[line]._latlngs]));
+                    addPolygon(
+                      v.layers._layers[line]._leaflet_id,
+                      new Polygon([v.layers._layers[line]._latlngs]),
+                    );
                   }
                 }
               });
@@ -100,7 +107,35 @@ const MapView = () => {
         </FeatureGroup>
         {geo && (
           <>
-            {first && (
+            {visibility.metroStations && (
+              <GeoJSON
+                key="metros"
+                data={geo[0]}
+                onEachFeature={onEachFeature}
+              />
+            )}
+            {visibility.busStops && (
+              <GeoJSON
+                key="busStops"
+                data={geo[1]}
+                onEachFeature={onEachFeature}
+              />
+            )}
+            {visibility.buildings && (
+              <GeoJSON
+                key="buildings"
+                data={geo[2]}
+                onEachFeature={onEachFeature}
+              />
+            )}
+            {/* {visibility.roads && (
+              <GeoJSON
+                key="streets"
+                data={geo[3]}
+                onEachFeature={onEachFeature}
+              />
+            )} */}
+            {/* {first && (
               <GeoJSON
                 key="first"
                 data={geo[0]}
@@ -123,7 +158,7 @@ const MapView = () => {
             )}
             {geo.slice(3).map((item, i) => (
               <GeoJSON key={i} data={item} onEachFeature={onEachFeature} />
-            ))}
+            ))} */}
           </>
         )}
       </MapContainer>
