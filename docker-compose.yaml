@@ -20,7 +20,7 @@ services:
     container_name: frontend_api_container
     image: frontend_api_img
     ports:
-      - "4173:4173"
+      - "5173:5173"
 
 #  ml_api:
 #    container_name: ml_api_container
