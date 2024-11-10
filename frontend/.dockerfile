@@ -16,7 +16,7 @@ RUN npm run build
 RUN npm install -g serve
 
 EXPOSE 3000
-EXPOSE 5173
+EXPOSE 4173
 
 # Command to run the server
 CMD ["npm", "run", "dev"]
